@@ -1,0 +1,9 @@
+{
+  "name": "clutchmind-coach",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Local post-game Valorant coach dashboard.",
+  "scripts": {
+    "start": "node server.js"
+  }
+}

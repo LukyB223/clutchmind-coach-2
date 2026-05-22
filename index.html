@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="cs">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ClutchMind Coach</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="brand-mark">CM</div>
+          <div>
+            <h1>ClutchMind</h1>
+            <p>osobní Valorant coach</p>
+          </div>
+        </div>
+
+        <nav class="nav">
+          <button class="nav-button active" data-view="dashboard" title="Přehled">
+            <span>H</span>
+            <span>Přehled</span>
+          </button>
+          <button class="nav-button" data-view="review" title="VOD review">
+            <span>V</span>
+            <span>VOD review</span>
+          </button>
+          <button class="nav-button" data-view="history" title="Historie">
+            <span>L</span>
+            <span>Historie</span>
+          </button>
+          <button class="nav-button" data-view="profile" title="Nastavení">
+            <span>S</span>
+            <span>Nastavení</span>
+          </button>
+        </nav>
+
+        <div class="side-panel">
+          <span class="eyebrow">dnešní cíl</span>
+          <p id="dailyGoal">Spusť první rozbor a coach ti nastaví konkrétní cíl na další hru.</p>
+        </div>
+      </aside>
+
+      <main class="workspace">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">pozápasový coaching</p>
+            <h2 id="pageTitle">Tvoje osobní analýza</h2>
+          </div>
+          <div class="coach-toggle" aria-label="Styl kouce">
+            <button class="tone active" data-tone="calm">Klidný</button>
+            <button class="tone" data-tone="direct">Tryhard</button>
+            <button class="tone" data-tone="igl">IGL</button>
+          </div>
+        </header>
+
+        <section id="dashboard" class="view active">
+          <div class="hero-panel">
+            <div class="hero-copy">
+              <span class="eyebrow">zpráva kouče</span>
+              <p id="coachMessage" class="coach-message">
+                Zatím tě poznávám. Spusť rozbor a začnu hledat vzorce, které se opakují.
+              </p>
+            </div>
+            <div class="score-ring" aria-label="Skóre dopadu">
+              <div id="impactScore">--</div>
+              <span>dopad</span>
+            </div>
+          </div>
+
+          <div class="metric-grid">
+            <article class="metric">
+              <span>Úspěšnost výher</span>
+              <strong id="winrate">--</strong>
+            </article>
+            <article class="metric">
+              <span>K/D</span>
+              <strong id="kd">--</strong>
+            </article>
+            <article class="metric">
+              <span>Nejčastější problém</span>
+              <strong id="mainIssue">--</strong>
+            </article>
+            <article class="metric">
+              <span>Nejlepší agent</span>
+              <strong id="bestAgent">--</strong>
+            </article>
+          </div>
+
+          <div class="content-grid">
+            <section class="panel">
+              <div class="panel-head">
+                <h3>Co se opakuje</h3>
+              </div>
+              <div id="patternList" class="pattern-list empty-state">
+                Zatím tu není dost dat. Spusť rozbor z reálných/importovaných zápasů.
+              </div>
+            </section>
+
+            <section class="panel">
+              <div class="panel-head">
+                <h3>Plán na další hru</h3>
+              </div>
+              <ol id="nextPlan" class="plan-list">
+                <li>Spusť první rozbor ve VOD review.</li>
+              </ol>
+              <div class="pro-read">
+                <span class="eyebrow">high-elo pohled</span>
+                <p id="proRead">Po prvním rozboru ti ukážu, jak by tvoje hry četl high-elo hráč.</p>
+              </div>
+            </section>
+          </div>
+
+          <section class="panel coach-report-panel">
+            <div class="panel-head">
+              <h3>Komplexní report kouče</h3>
+            </div>
+            <div id="coachReport" class="coach-report empty-state">
+              Zatím čekám na data ze zápasů. Po rozboru tady dostaneš delší vysvětlení stylu, role, agentů a konkrétních návyků.
+            </div>
+          </section>
+
+          <div class="content-grid">
+            <section class="panel">
+              <div class="panel-head">
+                <h3>Role podle playstylu</h3>
+              </div>
+              <div id="roleFitList" class="pattern-list empty-state">Zatím není co hodnotit.</div>
+            </section>
+
+            <section class="panel">
+              <div class="panel-head">
+                <h3>Agenti</h3>
+              </div>
+              <div id="agentTable" class="agent-table empty-state">Po importu uvidíš, s kým máš nejlepší dopad.</div>
+            </section>
+          </div>
+        </section>
+
+        <section id="review" class="view">
+          <section class="panel auto-coach-panel">
+            <div class="panel-head">
+              <div>
+                <h3>Automatický import kouče</h3>
+                <p class="panel-subtitle">Zadej jen Riot jméno, tag a region. Coach vyhodnotí všechny agenty, role, statistiky a opakující se vzorce z posledních zápasů.</p>
+              </div>
+              <button id="runAutoCoach" class="primary-button" type="button">Spustit rozbor</button>
+            </div>
+            <div class="auto-grid">
+              <label>
+                Riot jméno
+                <input id="riotName" placeholder="napr. Xiari" />
+              </label>
+              <label>
+                Tag
+                <input id="riotTag" placeholder="EUW" />
+              </label>
+              <label>
+                Region
+                <select id="riotRegion">
+                  <option value="eu">EU</option>
+                  <option value="na">NA</option>
+                  <option value="ap">AP</option>
+                  <option value="kr">KR</option>
+                  <option value="br">BR</option>
+                  <option value="latam">LATAM</option>
+                </select>
+              </label>
+            </div>
+            <label>
+              Volitelné: vlož JSON match dat z backendu/API
+              <textarea id="matchJson" placeholder='{"matches":[{"agent":"Omen","map":"Ascent","result":"loss","kills":17,"deaths":18,"assists":9,"acs":218,"hs":22,"moments":[{"phase":"mid","type":"late_rotate"}]}]}'></textarea>
+            </label>
+            <div class="auto-status" id="autoStatus">
+              Připraveno. Coach použije jen reálná data z backendu nebo JSON import, aby nevymýšlel agenty, které opravdu nehraješ.
+            </div>
+          </section>
+
+          <section class="panel moments-panel">
+            <div class="panel-head">
+              <div>
+                <h3>Automatický VOD rozbor</h3>
+                <p class="panel-subtitle">Nahraj záznam zápasu. Tato beta verze z videa vytáhne časové body a spojí je s chybami nalezenými z match history. Přesné rozpoznávání peeků z obrazu přijde až s navázaným vision modelem.</p>
+              </div>
+              <button id="analyzeVod" class="primary-button" type="button">Analyzovat VOD</button>
+            </div>
+            <label>
+              Agent ve VODu
+              <input id="vodAgent" value="Clove" placeholder="např. Clove" />
+            </label>
+            <label>
+              Nahraj VOD nebo klip
+              <input id="vodInput" type="file" accept="video/*" />
+            </label>
+            <div id="videoPreview" class="video-preview">
+              <span>Sem se zobrazí náhled VODu</span>
+            </div>
+            <div class="live-read">
+              <span class="eyebrow">vod coach</span>
+              <p id="liveCoachRead">Nahraj VOD a coach připraví automatický rozbor momentů.</p>
+            </div>
+            <div id="moments" class="moments"></div>
+          </section>
+        </section>
+
+        <section id="history" class="view">
+          <section class="panel">
+            <div class="panel-head">
+              <h3>Historie review</h3>
+              <button id="clearData" class="danger-button">Vymazat data</button>
+            </div>
+            <div id="historyList" class="history-list empty-state">Žádné uložené rozbory.</div>
+          </section>
+        </section>
+
+        <section id="profile" class="view">
+          <section class="panel profile-panel">
+            <h3>Jak má coach mluvit</h3>
+            <p>
+              ClutchMind si pamatuje tvoje opakované chyby a mluví podle zvoleného stylu.
+              První verze pracuje s pozápasovým review, nezasahuje do hry a nepoužívá live data z Valorantu.
+            </p>
+            <p>
+              Rady jsou stavěné jako znalostní báze z pro/high-elo principů: defaulting, map control,
+              trading, utility před kontaktem, rotační triggery, retake a clutch rozhodování.
+            </p>
+            <div class="persona-grid">
+              <div>
+                <strong>Klidny</strong>
+                <span>podpoří, vysvětlí, dá jeden jasný krok</span>
+              </div>
+              <div>
+                <strong>Tryhard</strong>
+                <span>krátké, přímé, bez omluv</span>
+              </div>
+              <div>
+                <strong>IGL</strong>
+                <span>řeší pozice, trady, rotace a rozhodování</span>
+              </div>
+            </div>
+            <div class="source-list">
+              <span class="eyebrow">zdroje pro další trénování modelu</span>
+              <a href="https://valorantesports.com/en-US/season/115571062868511862/handbook">VCT 2026 League Handbook</a>
+              <a href="https://playvalorant.com/en-us/news/game-updates/valorant-patch-notes-12-09/">VALORANT Patch Notes 12.09</a>
+              <a href="https://dignitas.gg/articles/the-art-of-defaulting-in-valorant">Dignitas: The Art of Defaulting</a>
+              <a href="https://dignitas.gg/articles/perfect-your-peeking-and-angles-in-valorant">Dignitas: Peeking and Angles</a>
+              <a href="https://bo3.gg/valorant/articles/how-to-play-a-1v1-clutch-in-valorant-decision-making-under-pressure">BO3.gg: 1v1 Clutch Decision-Making</a>
+            </div>
+          </section>
+        </section>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>

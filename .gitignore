@@ -1,0 +1,13 @@
+# Local runtime files
+*.log
+
+# Secrets
+.env
+.env.*
+
+# OS files
+Thumbs.db
+.DS_Store
+
+# Dependencies
+node_modules/

@@ -12,7 +12,6 @@ Use this as the Riot Product URL:
 https://lukyb223.github.io/clutchmind-coach-2/
 ```
 
-Replace `YOUR_GITHUB_USERNAME` after publishing the repository with GitHub Pages.
 
 ## Spusteni
 

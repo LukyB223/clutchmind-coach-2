@@ -4,12 +4,12 @@ ClutchMind Coach is a post-game VALORANT coaching and performance analysis proto
 
 It helps players review completed matches by analyzing agents, roles, maps, match results, K/D/A, ACS, headshot percentage, win rate, repeated mistakes, and likely best role. It does not provide live in-game assistance.
 
-## Riot Review Page
+## Public Prototype URLs
 
-Use this page as the public Product URL for Riot review:
+Use this as the Riot Product URL:
 
 ```text
-https://YOUR_GITHUB_USERNAME.github.io/clutchmind-coach/riot-review.html
+https://lukyb223.github.io/clutchmind-coach-2/
 ```
 
 Replace `YOUR_GITHUB_USERNAME` after publishing the repository with GitHub Pages.
@@ -27,7 +27,7 @@ Replace `YOUR_GITHUB_USERNAME` after publishing the repository with GitHub Pages
 
 For Riot review, the static review page can be hosted with GitHub Pages:
 
-1. Create a public GitHub repository named `clutchmind-coach`.
+1. Create a public GitHub repository named `clutchmind-coach-2`.
 2. Upload all files from this folder.
 3. In GitHub, open `Settings` -> `Pages`.
 4. Set source to `Deploy from a branch`.

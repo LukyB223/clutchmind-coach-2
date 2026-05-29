@@ -35,7 +35,7 @@ For Riot review, the static review page can be hosted with GitHub Pages:
 6. Open:
 
 ```text
-https://YOUR_GITHUB_USERNAME.github.io/clutchmind-coach/riot-review.html
+https://lukyb223.github.io/clutchmind-coach-2/riot-review.html
 ```
 
 The local backend (`server.js`) is not run by GitHub Pages. It is included to demonstrate the prototype and local API integration.
